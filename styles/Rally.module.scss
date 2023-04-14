@@ -159,9 +159,7 @@
         .rally-pay-enroll-block {
             padding-top: 10px;
         }
-        .rally-purchase-block {
-            padding-top: 30px;
-        }
+
         .rally-enroll-container {
             background-color: transparent;
         }
@@ -197,7 +195,8 @@
             border-right: 1px solid var(--light-grey-color);
         }
     }
-    .rally-purchase-block {
+    .rally-purchase-block-fixed {
+        padding-top: 30px;
         position: fixed;
         bottom: 20px;
         width: 500px;

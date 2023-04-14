@@ -1,8 +1,10 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import { Context } from '../lib/rally/Context';
 
 const Checkout = () => {
     const { rally } = useContext(Context);
+    const purchaseBlockElement = useRef<HTMLDivElement>(null);
+    const rightColumn = document.querySelector('.right-column');
 
     useEffect(() => {
         rally.events.subscribe(('payments.initiated'), () => {
@@ -20,6 +22,22 @@ const Checkout = () => {
             }
         });
     }, []);
+
+    const isScrollable = (element: any) => {
+        return element?.scrollHeight > element?.clientHeight;
+    }
+
+    const updateClass = () => {
+        if (isScrollable(rightColumn)) {
+            purchaseBlockElement.current?.classList.add('rally-purchase-block-fixed');
+        } else {
+            purchaseBlockElement.current?.classList.remove('rally-purchase-block-fixed');
+        }
+    }
+
+    updateClass();
+    window.addEventListener('resize', updateClass);
+    rightColumn?.addEventListener('DOMNodeInserted', updateClass);
 
     return (<>
         <rally-express-checkout-group config='{"showHeading": false}'></rally-express-checkout-group>
@@ -40,7 +58,7 @@ const Checkout = () => {
                 <div className="rally-pay-enroll-block">
                     <rally-pay-enroll></rally-pay-enroll>
                 </div>
-                <div className="rally-purchase-block rally-mt-2">
+                <div className="rally-purchase-block rally-mt-2" ref={purchaseBlockElement}>
                     <rally-purchase-button></rally-purchase-button>
                 </div>
             </rally-credit-card-payment>
