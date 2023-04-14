@@ -1,0 +1,67 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--light-grey-color);
+    border-radius: 4px;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    padding: 20px 15px;
+}
+
+.row:not(.last) {
+    border-bottom: 1px solid var(--light-grey-color);
+}
+
+.label {
+    color: var(--grey-color);
+    font-size: var(--font-size-xs);
+    max-width: 75px;
+    min-width: 75px;
+}
+
+.details {
+    color: var(--black-color);
+    font-size: var(--font-size-xs);
+    display: flex;
+    align-items: center;
+}
+
+.heading {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    color: var(--black-color);
+    margin-top: 10px;
+}
+
+.subheading {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 22px;
+    text-align: center;
+    color: var(--grey-color);
+    margin-top: 10px;
+    word-wrap: break-word;
+}
+
+.successIcon {
+    width: 60px;
+    height: 60px;
+    margin: auto;
+    margin-top: 40px;
+    background-image: url("https://assets.onrally.com/icons/success-white-icon.svg");
+    &::before {
+        content: none;
+    }
+}
+
+.successBlock {
+    margin: 0 auto 30px auto;
+    padding-top: 12px;
+    text-align: center;
+}
