@@ -32,6 +32,7 @@ export const RallyProvider: React.FC<RallyProviderProps> = ({ children }) => {
 
     const handleSessionState = () => {
         Rally.events.subscribe('cart.initiated', () => {
+            console.log(Rally.data.cart.get().lineItems?.[0]);
             const persistedItem = localStorage.getItem(`rallyCheckoutProduct`);
             const checkoutProduct = persistedItem ? JSON.parse(persistedItem) : Rally.data.cart.get().lineItems?.[0]
             localStorage.setItem(`rallyCheckoutProduct`, JSON.stringify(checkoutProduct))
@@ -47,21 +48,20 @@ export const RallyProvider: React.FC<RallyProviderProps> = ({ children }) => {
         if (!isInitiated) {
             isInitiated = true;
             const params = new URLSearchParams(window.location.search);
-
             const quantity = params.get('quantity') || 1;
             let productId = params.get('productId');
-            productId = productId || '300';
+
+            params.delete('productId');
+            window.history.pushState('', '', `${window.location.origin}`);
 
             const persistedCheckoutId = localStorage.getItem('rallyCheckoutSessionId');
-            const persistedItem = localStorage.getItem(`rallyCheckoutProduct`)
-            const checkoutProduct = persistedItem ? JSON.parse(persistedItem) : null;
-            const isProductStored = productId === checkoutProduct?.externalProductId
-
             const config: any = { includeElements: ['rally-confirmation-details'], flowSegments: ['other'], customCheckoutFlow: { disableRedirect: true }, sessionOrigin: 'landing_page', pageType: localStorage.getItem('rallyPageType') || 'checkout' };
-            if (persistedCheckoutId && isProductStored) {
+
+            if (persistedCheckoutId && !productId) {
                 config.checkoutSessionId = persistedCheckoutId;
             } else {
                 localStorage.clear();
+                productId = productId || '300';
                 config.lineItems = [{ productId, quantity, includeDetails: true }]
             }
             handleSessionState();
