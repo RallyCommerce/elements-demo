@@ -137,8 +137,8 @@
             font-size: 14px;
         }
         .rally-credit-card-icon {
-            position: relative;
-            top: 40px;
+            position: absolute;
+            bottom: 87px;
             right: 15px;
             z-index: 1;
         }
@@ -198,9 +198,13 @@
     .rally-purchase-block-fixed {
         padding-top: 30px;
         position: fixed;
-        bottom: 20px;
+        bottom: 0px;
         width: 500px;
         z-index: 1;
+    }
+    .rally-white-space {
+        background-color: white;
+        height: 20px;
     }
     .rally-accept-tou {
         margin-bottom: 10px;
@@ -292,4 +296,8 @@
 .rally-logo {
     height: 30px;
     border-radius: 50%;
+}
+
+.rally-btn:disabled {
+    background: #575353 !important;
 }

@@ -6,23 +6,6 @@ const Checkout = () => {
     const purchaseBlockElement = useRef<HTMLDivElement>(null);
     const rightColumn = document.querySelector('.right-column');
 
-    useEffect(() => {
-        rally.events.subscribe(('payments.initiated'), () => {
-            const expiryDateLabelEl = document.querySelector('label[for="vgs-card-expiry"]');
-            const cvcErrorMessageEl = document.querySelector('label[for="vgs-card-cvc"]')?.parentElement?.querySelector('.rally-error-msg');
-            const expiryDateErrorMessageEl = expiryDateLabelEl?.parentElement?.querySelector('.rally-error-msg');
-            if (expiryDateLabelEl) {
-                expiryDateLabelEl.innerHTML = "MM/YY";
-                if (expiryDateErrorMessageEl) {
-                    expiryDateErrorMessageEl.innerHTML = "Enter MM/YY";
-                }
-                if (cvcErrorMessageEl) {
-                    cvcErrorMessageEl.innerHTML = "Enter code";
-                }
-            }
-        });
-    }, []);
-
     const isScrollable = (element: any) => {
         return element?.scrollHeight > element?.clientHeight;
     }
@@ -50,7 +33,7 @@ const Checkout = () => {
         </div>
         <div className="rally-credit-card-block rally-mt-4">
             <span className="rally-heading rally-card-information-heading rally-d-none">Card information</span>
-            <rally-credit-card-payment config='{"style":{"isExpanded":true}, "loader":{"tileCount": 2, "enableOnBillingSection": false}}'>
+            <rally-credit-card-payment config='{"style":{"isExpanded":true}, "loader":{"tileCount": 2, "enableOnBillingSection": false}, "fields":[{"key":"expiryDate","label": "MM/YY"}]}'>
                 <div className="rally-billing-address-option-block">
                     <span className="rally-heading rally-billing-heading rally-d-none">Billing address</span>
                     <rally-billing-address-option></rally-billing-address-option>
@@ -60,6 +43,7 @@ const Checkout = () => {
                 </div>
                 <div className="rally-purchase-block rally-mt-2" ref={purchaseBlockElement}>
                     <rally-purchase-button></rally-purchase-button>
+                    <div className="rally-white-space"></div>
                 </div>
             </rally-credit-card-payment>
         </div>

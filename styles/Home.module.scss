@@ -8,14 +8,19 @@
 
 .title {
     font-weight: 900;
-    font-size: 50px;
+    font-size: 35px;
     line-height: 120%;
     margin-bottom: 20px;
 }
 
 .mainText {
-    margin: 80px 0;
+    margin: 25px 0 80px 0;
     line-height: 27px;
+}
+
+.footer {
+    text-align: center;
+    color: white;
 }
 
 .text-center {
@@ -73,6 +78,9 @@
         height: 100%;
     }
     .left-column {
+        .footer {
+            display: none;
+        }
         max-width: 50%;
         .content {
             align-self: flex-end;
