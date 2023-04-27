@@ -25,14 +25,14 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ scrollToCheckout }) => 
 
     return (<>
         <div className="text-center rally-mb-5">
-            <h1 className={styles.title}>Take home The<br /> {product?.title}<br /> for just {productPrice}!</h1>
+            <h1 className={styles.title}>Take home the<br /> {product?.title}<br /> for just {productPrice}!</h1>
         </div>
         <rally-image-gallery ref={imageGalleryRef} config='{"galleryLayout":{"desktop":"thumbnails","mobile":"stacked"}}'></rally-image-gallery>
         <div className="buy-now-action">
             <ActionButton onClick={scrollToCheckout}>BUY NOW</ActionButton>
         </div>
         <div className="rally-d-flex text-center rally-mt-5">
-            <div>
+            <div className="rally-pr-1">
                 <FeatureCard
                     iconSrc="/handshake-icon.svg"
                     iconAlt="Handshake Icon"
@@ -40,7 +40,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ scrollToCheckout }) => 
                     subText="If you miss, you’re doing it wrong."
                 ></FeatureCard>
             </div>
-            <div>
+            <div className="rally-pl-1">
                 <FeatureCard
                     iconSrc="/bolt-icon.svg"
                     iconAlt="Bolt Icon"
