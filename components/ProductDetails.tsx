@@ -13,8 +13,6 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ scrollToCheckout }) => 
     const [productPrice, setProductPrice] = useState<any>(null);
     const imageGalleryRef = useRef<HTMLDivElement>(null);
     const { product, rally } = useContext(Context)
-    const params = new URLSearchParams(window.location.search);
-    const productId = params.get('productId');
 
     useEffect(() => {
         if (product) {
@@ -32,7 +30,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ scrollToCheckout }) => 
         <div className="buy-now-action">
             <ActionButton onClick={scrollToCheckout}>BUY NOW</ActionButton>
         </div>
-        {productId ? (<span></span>) : (
+        {product?.externalProductId !== '300' ? (<span></span>) : (
             <div className="rally-d-flex text-center rally-mt-5">
                 <div className="rally-pr-1">
                     <FeatureCard
