@@ -47,18 +47,22 @@ export const RallyProvider: React.FC<RallyProviderProps> = ({ children }) => {
         if (!isInitiated) {
             isInitiated = true;
             const params = new URLSearchParams(window.location.search);
-            const productId = params.get('productId');
-            const persistedCheckoutId = localStorage.getItem('rallyCheckoutSessionId');
 
+            const quantity = params.get('quantity') || 1;
+            let productId = params.get('productId');
+            productId = productId || '300';
+
+            const persistedCheckoutId = localStorage.getItem('rallyCheckoutSessionId');
             const persistedItem = localStorage.getItem(`rallyCheckoutProduct`)
             const checkoutProduct = persistedItem ? JSON.parse(persistedItem) : null;
-            const isProductStored = params.get('productId') ? productId === checkoutProduct?.productId : true;
+            const isProductStored = productId === checkoutProduct?.externalProductId
+
             const config: any = { includeElements: ['rally-confirmation-details'], flowSegments: ['other'], customCheckoutFlow: { disableRedirect: true }, sessionOrigin: 'landing_page', pageType: localStorage.getItem('rallyPageType') || 'checkout' };
             if (persistedCheckoutId && isProductStored) {
                 config.checkoutSessionId = persistedCheckoutId;
             } else {
                 localStorage.clear();
-                config.lineItems = [{ productId: 300, quantity: 1, includeDetails: true }]
+                config.lineItems = [{ productId, quantity, includeDetails: true }]
             }
             handleSessionState();
             Rally.init(process.env.NEXT_PUBLIC_RALLY_CLIENT_ID, config);
