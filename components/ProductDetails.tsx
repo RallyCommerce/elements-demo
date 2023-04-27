@@ -13,7 +13,8 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ scrollToCheckout }) => 
     const [productPrice, setProductPrice] = useState<any>(null);
     const imageGalleryRef = useRef<HTMLDivElement>(null);
     const { product, rally } = useContext(Context)
-
+    const params = new URLSearchParams(window.location.search);
+    const productId = params.get('productId');
 
     useEffect(() => {
         if (product) {
@@ -31,23 +32,25 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ scrollToCheckout }) => 
         <div className="buy-now-action">
             <ActionButton onClick={scrollToCheckout}>BUY NOW</ActionButton>
         </div>
-        <div className="rally-d-flex text-center rally-mt-5">
-            <div className="rally-pr-1">
-                <FeatureCard
-                    iconSrc="/handshake-icon.svg"
-                    iconAlt="Handshake Icon"
-                    text="No-miss guarantee."
-                    subText="If you miss, you’re doing it wrong."
-                ></FeatureCard>
+        {productId ? (<span></span>) : (
+            <div className="rally-d-flex text-center rally-mt-5">
+                <div className="rally-pr-1">
+                    <FeatureCard
+                        iconSrc="/handshake-icon.svg"
+                        iconAlt="Handshake Icon"
+                        text="No-miss guarantee."
+                        subText="If you miss, you’re doing it wrong."
+                    ></FeatureCard>
+                </div>
+                <div className="rally-pl-1">
+                    <FeatureCard
+                        iconSrc="/bolt-icon.svg"
+                        iconAlt="Bolt Icon"
+                        text="Super-charge your game instantly. Sink shot after shot with the distance of a pro."
+                    ></FeatureCard>
+                </div>
             </div>
-            <div className="rally-pl-1">
-                <FeatureCard
-                    iconSrc="/bolt-icon.svg"
-                    iconAlt="Bolt Icon"
-                    text="Super-charge your game instantly. Sink shot after shot with the distance of a pro."
-                ></FeatureCard>
-            </div>
-        </div>
+        )}
         <div dangerouslySetInnerHTML={{ __html: product?.description }} className={styles.mainText}>
         </div>
     </>

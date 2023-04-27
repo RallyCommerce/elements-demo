@@ -4,6 +4,11 @@
     align-items: center;
     margin-bottom: 20px;
     font-size: 18px;
+    a {
+        cursor: pointer;
+        text-decoration: none;
+        color: white;
+    }
 }
 
 .footer {
@@ -20,13 +25,6 @@
 .mainText {
     margin: 25px 0;
     line-height: 27px;
-}
-
-.footer {
-    a {
-        color: white;
-    }
-    margin-bottom: 25px;
 }
 
 .text-center {
@@ -84,9 +82,6 @@
         height: 100%;
     }
     .left-column {
-        .footer {
-            display: block;
-        }
         max-width: 50%;
         .content {
             align-self: flex-end;
