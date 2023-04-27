@@ -36,7 +36,7 @@ export default function Home() {
               </div>
               <ProductDetails scrollToCheckout={scrollToCheckout}></ProductDetails>
               <div className="footer">
-                Learn more about <a href="https://rallyon.com" target='_blank'>Rally’s composable checkout</a>
+                <a href="https://rallyon.com" target='_blank'>Learn more about Rally’s composable checkout</a>
               </div>
             </div>
           </div>

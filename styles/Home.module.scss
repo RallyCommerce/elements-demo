@@ -6,6 +6,10 @@
     font-size: 18px;
 }
 
+.footer {
+    display: none;
+}
+
 .title {
     font-weight: 900;
     font-size: 35px;
@@ -14,13 +18,15 @@
 }
 
 .mainText {
-    margin: 25px 0 80px 0;
+    margin: 25px 0;
     line-height: 27px;
 }
 
 .footer {
-    text-align: center;
-    color: white;
+    a {
+        color: white;
+    }
+    margin-bottom: 25px;
 }
 
 .text-center {
@@ -79,7 +85,7 @@
     }
     .left-column {
         .footer {
-            display: none;
+            display: block;
         }
         max-width: 50%;
         .content {
