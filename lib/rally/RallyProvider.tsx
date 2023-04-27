@@ -32,9 +32,9 @@ export const RallyProvider: React.FC<RallyProviderProps> = ({ children }) => {
 
     const handleSessionState = () => {
         Rally.events.subscribe('cart.initiated', () => {
-            const persistedItem = localStorage.getItem('rallyCheckoutProduct');
+            const persistedItem = localStorage.getItem(`rallyCheckoutProduct`);
             const checkoutProduct = persistedItem ? JSON.parse(persistedItem) : Rally.data.cart.get().lineItems?.[0]
-            localStorage.setItem('rallyCheckoutProduct', JSON.stringify(checkoutProduct))
+            localStorage.setItem(`rallyCheckoutProduct`, JSON.stringify(checkoutProduct))
             setProduct(checkoutProduct);
             localStorage.setItem('rallyCheckoutSessionId', Rally.data.page.get()?.checkoutSessionId);
         });
@@ -46,12 +46,23 @@ export const RallyProvider: React.FC<RallyProviderProps> = ({ children }) => {
     useEffect(() => {
         if (!isInitiated) {
             isInitiated = true;
-            const config: any = { includeElements: ['rally-confirmation-details'], flowSegments: ['other'], customCheckoutFlow: { disableRedirect: true }, sessionOrigin: 'landing_page', pageType: localStorage.getItem('rallyPageType') || 'checkout' };
+            const params = new URLSearchParams(window.location.search);
+
+            const quantity = params.get('quantity') || 1;
+            let productId = params.get('productId');
+            productId = productId || '300';
+
             const persistedCheckoutId = localStorage.getItem('rallyCheckoutSessionId');
-            if (persistedCheckoutId) {
+            const persistedItem = localStorage.getItem(`rallyCheckoutProduct`)
+            const checkoutProduct = persistedItem ? JSON.parse(persistedItem) : null;
+            const isProductStored = productId === checkoutProduct?.externalProductId
+
+            const config: any = { includeElements: ['rally-confirmation-details'], flowSegments: ['other'], customCheckoutFlow: { disableRedirect: true }, sessionOrigin: 'landing_page', pageType: localStorage.getItem('rallyPageType') || 'checkout' };
+            if (persistedCheckoutId && isProductStored) {
                 config.checkoutSessionId = persistedCheckoutId;
             } else {
-                config.lineItems = [{ productId: 300, quantity: 1, includeDetails: true }]
+                localStorage.clear();
+                config.lineItems = [{ productId, quantity, includeDetails: true }]
             }
             handleSessionState();
             Rally.init(process.env.NEXT_PUBLIC_RALLY_CLIENT_ID, config);

@@ -163,10 +163,6 @@
             }
         }
 
-        .rally-pay-enroll-block {
-            padding-top: 10px;
-        }
-
         .rally-enroll-container {
             background-color: transparent;
         }
@@ -219,7 +215,7 @@
 
     .rally-image-thumbnails .rally-thumbnails-container {
         width: 320px;
-        height: 320px;
+        height: 100%;
     }
 
     .rally-image-gallery {
@@ -307,4 +303,8 @@
 
 .rally-btn:disabled {
     background: #575353 !important;
+}
+
+.rally-pay-enroll-block {
+    padding-top: 10px;
 }
