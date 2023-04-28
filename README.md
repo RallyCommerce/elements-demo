@@ -1,4 +1,4 @@
-This demonstration highlights the smooth integration of Rally elements within a Next.js and React-based application, providing a clear example of how you can efficiently create a customized checkout experience for your customers.
+This repository's purpose is to showcase the smooth integration of Rally elements within a Next.js and React-based application, providing a clear example of how you can efficiently create a customized checkout experience for your customers.
 
 ## Getting Started
 
