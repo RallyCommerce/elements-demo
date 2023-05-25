@@ -33,7 +33,7 @@ const Checkout = () => {
         </div>
         <div className="rally-credit-card-block rally-mt-4">
             <span className="rally-heading rally-card-information-heading rally-d-none">Card information</span>
-            <rally-credit-card-payment config='{"style":{"isExpanded":true}, "loader":{"tileCount": 2, "enableOnBillingSection": false}, "fields":[{"key":"expiryDate","label": "MM/YY"}]}'>
+            <rally-credit-card-payment config='{"isExpanded":true, "loader":{"tileCount": 2, "enableOnBillingSection": false}, "fields":[{"key":"expiryDate","label": "MM/YY"}]}'>
                 <div className="rally-billing-address-option-block">
                     <span className="rally-heading rally-billing-heading rally-d-none">Billing address</span>
                     <rally-billing-address-option></rally-billing-address-option>

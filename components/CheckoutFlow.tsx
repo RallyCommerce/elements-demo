@@ -13,7 +13,7 @@ const CheckoutFlow = () => {
         setShowConfirmation(!showConfirmation);
     };
     useEffect(() => {
-        rally.events.subscribe(('order.initiated'), () => handleShowConfirmation());
+        rally.events.subscribe(('customFlow.updated'), (data: any) => { if (data.type === 'confirmation') handleShowConfirmation() });
     }, []);
 
     return (<>
