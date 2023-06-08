@@ -8,7 +8,7 @@
         .rally-form-wrapper {
             display: flex;
             flex-wrap: wrap;
-            border: 1px solid var(--light-grey-color);
+            border: 1px solid var(--border-color);
             border-radius: 4px;
             .rally-field-wrapper.rally-form-group {
                 margin-bottom: 0;
@@ -33,13 +33,13 @@
             .rally-field-wrapper.rally-province,
             .rally-field-wrapper.rally-address2,
             .rally-field-wrapper.rally-country {
-                border-bottom: 1px solid var(--light-grey-color);
+                border-bottom: 1px solid var(--border-color);
             }
             .rally-field-wrapper.rally-firstName,
             .rally-field-wrapper.rally-address1,
             .rally-field-wrapper.rally-province.rally-field-select:not(.rally-empty),
             .rally-field-wrapper.rally-country {
-                border-right: 1px solid var(--light-grey-color);
+                border-right: 1px solid var(--border-color);
             }
 
             .rally-field-wrapper.rally-firstName,
@@ -175,11 +175,11 @@
             box-shadow: none;
         }
         .rally-credit-card {
-            border: 1px solid var(--light-grey-color);
+            border: 1px solid var(--border-color);
             border-radius: 4px;
         }
         .rally-card-input:nth-child(1) {
-            border-bottom: 1px solid var(--light-grey-color);
+            border-bottom: 1px solid var(--border-color);
         }
 
         .rally-credit-card > *:nth-child(1) {
@@ -195,7 +195,7 @@
         }
         .rally-credit-card > *:nth-child(2),
         .rally-credit-card > *:nth-child(3) {
-            border-right: 1px solid var(--light-grey-color);
+            border-right: 1px solid var(--border-color);
         }
     }
     .rally-purchase-block-fixed {
