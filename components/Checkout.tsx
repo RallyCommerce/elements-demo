@@ -23,7 +23,7 @@ const Checkout = () => {
     rightColumn?.addEventListener('DOMNodeInserted', updateClass);
 
     return (<>
-        <rally-express-checkout-group config='{"showHeading": false}'></rally-express-checkout-group>
+        <rally-express-checkout-group config='{"showHeading": false, "payPalExpress": false}'></rally-express-checkout-group>
         <div className="rally-separator rally-border-top rally-or-block">
             <h6 className="rally-express-heading">OR PAY WITH CARD</h6>
         </div>
