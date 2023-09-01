@@ -13,7 +13,16 @@ const CheckoutFlow = () => {
         setShowConfirmation(!showConfirmation);
     };
     useEffect(() => {
-        rally.events.subscribe(('customFlow.updated'), (data: any) => { if (data.type === 'confirmation') handleShowConfirmation() });
+        rally.events.subscribe(('customFlow.updated'), (data: any) => {
+            if (data?.token) {
+                sessionStorage.setItem('rallyAuthToken', JSON.stringify(data?.token));
+            }
+            if (data.type === 'confirmation') {
+                rally.init(process.env.NEXT_PUBLIC_RALLY_CLIENT_ID, { checkoutSessionId: localStorage.getItem('rallyCheckoutSessionId'), pageType: 'confirmation' });
+                setTimeout(() => handleShowConfirmation(), 1000);
+                localStorage.clear();
+            }
+        });
     }, []);
 
     return (<>
