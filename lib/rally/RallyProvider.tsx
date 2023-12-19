@@ -65,7 +65,7 @@ export const RallyProvider: React.FC<RallyProviderProps> = ({ children }) => {
                 config.lineItems = [{ productId, quantity, includeDetails: true }]
             }
             handleSessionState();
-            Rally.init(process.env.NEXT_PUBLIC_RALLY_CLIENT_ID, config);
+            Rally.init('9382089f-6671-4387-94c5-85a6f7f6fcc7' || process.env.NEXT_PUBLIC_RALLY_CLIENT_ID, config);
         }
     }, []);
 

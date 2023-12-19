@@ -17,8 +17,8 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ scrollToCheckout }) => 
     useEffect(() => {
         if (product) {
             setProductPrice(rally.currency.transform(product?.discountedPrice));
-            let images = [product?.image];
-            rally.elements.update(imageGalleryRef.current, { images: images });
+            let images = [{ src: product?.image, mediaType: 'image' }];
+            rally.elements.update(imageGalleryRef.current, { media: images });
         }
     }, [product])
 

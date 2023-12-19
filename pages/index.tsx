@@ -31,7 +31,7 @@ export default function Home() {
           <div className="left-column">
             <div className="content">
               <div className="logo">
-                <rally-logo config='{"src": "https://img.onrally.dev/media/org_lDa/baab518f-711c-45b6-a497-f40dc5e810a6.png"}'></rally-logo>
+                <rally-logo config='{"src": "./rally-logo.png"}'></rally-logo>
                 <span className="rally-ml-2"><a href="https://rallyon.com">rally.shop</a></span>
               </div>
               <ProductDetails scrollToCheckout={scrollToCheckout}></ProductDetails>

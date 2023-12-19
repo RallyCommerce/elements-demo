@@ -213,9 +213,8 @@
         margin-bottom: 10px;
     }
 
-    .rally-media-thumbnails .rally-thumbnails-container {
-        width: 320px;
-        height: 100%;
+    .rally-media-thumbnails .rally-thumbnails-container .rally-thumbnails-main-media-item {
+        height: 320px !important;
     }
 
     .rally-media-gallery {
@@ -297,7 +296,7 @@
 }
 
 .rally-logo {
-    height: 30px;
+    height: 30px !important;
     border-radius: 50%;
 }
 
