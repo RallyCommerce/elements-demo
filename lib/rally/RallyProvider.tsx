@@ -10,7 +10,7 @@ declare global {
             'rally-email': any;
             'rally-shipping-address': any;
             'rally-express-checkout-group': any;
-            'rally-image-gallery': any;
+            'rally-media-gallery': any;
             'rally-credit-card-payment': any;
             'rally-billing-address-option': any;
             'rally-pay-enroll': any;

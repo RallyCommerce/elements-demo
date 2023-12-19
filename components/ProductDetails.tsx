@@ -26,7 +26,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ scrollToCheckout }) => 
         <div className="text-center rally-mb-5">
             <h1 className={styles.title}>Take home the<br /> {product?.title}<br /> for just {productPrice}!</h1>
         </div>
-        <rally-image-gallery ref={imageGalleryRef} config='{"galleryLayout":{"desktop":"thumbnails","mobile":"stacked"}}'></rally-image-gallery>
+        <rally-media-gallery ref={imageGalleryRef} config='{"galleryLayout":{"desktop":"thumbnails","mobile":"stacked"}}'></rally-media-gallery>
         <div className="buy-now-action">
             <ActionButton onClick={scrollToCheckout}>BUY NOW</ActionButton>
         </div>
